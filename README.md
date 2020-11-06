@@ -28,3 +28,10 @@ Lecture Notes for Recommendation System Algorithms
 10.|Yahoo Movies公开?乐数据集|https://webscope.sandbox.yahoo.com
 11.|Outbrain 点击率数据|https://www.outbrain.com
 12.|Amazon product data亚马逊|http://jmcauley.ucsd.edu/data/amazon/index.html
+
+## :fire: 2.推荐系统的主要流程
+![https://zhuanlan.zhihu.com/p/259985388](https://pic1.zhimg.com/80/v2-8670b6282301ee6ce727e54f0d8c78c0_720w.jpg)
+推荐系统重要的3个模块
+    - 召回模块：物品太多（数以亿计），需要挑选（~100），需要快速查询（不超过**100毫秒**）
+    - 排序模块：对后选集精排，特征交叉，评分，更加精确的预测，TOPk
+    - 后排模块：最终给到用户前的调整，运行干预、优先级调整、下发规则等
