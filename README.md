@@ -11,3 +11,20 @@ Lecture Notes for Recommendation System Algorithms
     <a href="https://www.python.org/"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" align="right" height="48" width="48" ></a>
 </p>
 <br />
+
+
+## :fire: 1.常用到的库、模型、数据集等
+序号| 库、模型/数据集 | 链接
+------|------|------
+1.|Scikit-Learn(Sklearn) |https://github.com/scikit-learn/scikit-learn (https://www.cntofu.com/book/170/index.html)
+2.|Spark MLlib |https://spark.apache.org/docs/latest/ml-guide.html
+3.|TensorFlow |https://github.com/tensorflow/tensorflow （https://www.tensorflow.org/api_docs/）
+4.|libffm |https://github.com/ycjuan/libffm
+5.|fastFM |https://github.com/ibayer/fastFM
+6.|gcforest深度森林 |https://github.com/kingfengji/gcForest
+7.|xLearn|https://github.com/aksnzhy/xLearn （https://xlearn-doc.readthedocs.io/en/latest/）
+8.|XGBoost|https://github.com/dmlc/xgboost （https://xgboost.readthedocs.io/en/latest/）
+9.|Million Song Dataset（MSD数据集） |http://millionsongdataset.com/
+10.|Yahoo Movies公开?乐数据集|https://webscope.sandbox.yahoo.com
+11.|Outbrain 点击率数据|https://www.outbrain.com
+12.|Amazon product data亚马逊|http://jmcauley.ucsd.edu/data/amazon/index.html
