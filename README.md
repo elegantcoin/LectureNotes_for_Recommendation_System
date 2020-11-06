@@ -65,3 +65,17 @@ Lecture Notes for Recommendation System Algorithms
 - 牛顿法（二阶导，海森矩阵）：
     - Adam：利用有偏一阶矩、二阶矩，参数平稳，使用大数据集和高维、非凸优化
     - L-BFGS：计算Hessian矩阵的逆，收敛速度快，但是消耗内存。对初始值有要求，容易陷入鞍点。
+
+
+TODO List：
+## :fire: 5.推荐系统历史进展梳理
+## :fire: 6.协同过滤算法
+## :fire: 7.Word2vec算法
+## :fire: 8.线性的LR模型
+## :fire: 9.线性的FM模型
+## :fire: 10.树的决策树
+## :fire: 11.树的集成学习
+## :fire: 12.深度学习的DNN算法
+## :fire: 13.深度学习的Wide&Deep模型
+## :fire: 14.深度学习的DeepFM模型
+
