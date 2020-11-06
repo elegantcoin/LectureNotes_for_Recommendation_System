@@ -44,3 +44,24 @@ Lecture Notes for Recommendation System Algorithms
     - 推荐结果集：一般是排序的集合
 
 ## :fire: 3.推荐系统的主要算法
+- 召回模型算法
+    - 内容相似：word2vec、LDA、FastText、LSF-SCNN、LSTM
+    - 行为相似：ItemCF、UserCF、关联规则
+    - 深度学习：DNN
+- 排序模型算法
+    - 线性：LR、FM、特征交叉+LR/FM
+    - 非线性：DNN、Wide&Deep（Google play）、FNN、PNN、DeepFM（华为诺亚??）、NFM、AFM、DCN、DIN（阿里）
+    - 树模型：决策树、随机森林、GBDT、XGBoost、GBDT+LR
+    - 集成学习：数类型集成、GCForest
+
+## :fire: 4.常见优化方法
+- 梯度法（一阶导）：
+    - SGD：适应数量大的数据集，容易陷入局部最优 θ = θ -εg
+    - 动量：方向加速度，抑制震荡，  v = αv-εg，θ = θ + v
+    - Nesterov动量：提高灵敏度，先临时更新θ，再更新速度，更新θ。
+    - AdaGrad：计算累积平方梯度，适合处理稀疏梯度。
+    
+
+- 牛顿法（二阶导，海森矩阵）：
+    - Adam：利用有偏一阶矩、二阶矩，参数平稳，使用大数据集和高维、非凸优化
+    - L-BFGS：计算Hessian矩阵的逆，收敛速度快，但是消耗内存。对初始值有要求，容易陷入鞍点。
