@@ -79,3 +79,24 @@ TODO List：
 ## :fire: 13.深度学习的Wide&Deep模型
 ## :fire: 14.深度学习的DeepFM模型
 
+
+
+## :fire: Appendex
+- pandas 操作
+    - explode 操作 一行变多行
+    ```python
+    # 测试一行变多行
+    import pandas as pd
+    import numpy as np
+    from ast import literal_eval
+    df = pd.DataFrame({'key1': ['K0', 'K0', np.nan, 'K1'],
+                    'A': ["[{'id': 3, 'name': 'Fa'}, {'id': 4, 'name': 'Th'}]", "[{'id': 1, 'name': 'An'}, {'id': 2, 'name': 'Co'}]", "[{'id': 1, 'name': 'An'}, {'id': 2, 'name': 'Co'}]", "[{'id': 1, 'name': 'An'}, {'id': 2, 'name': 'Co'}]"]})
+    print(df)
+    df['A'] = df['A'].apply(literal_eval)
+    df['A'] = df['A'].apply(lambda x: [i['name'].lower() for i in x] if isinstance(x, list) else [])
+    s = df.apply(lambda x: pd.Series(x['A']),axis=1).stack().reset_index(level=1, drop=True)
+    s.name = 'B'
+    B_df = df.drop('A', axis=1).join(s)
+    B_df
+    ```
+
