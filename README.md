@@ -69,7 +69,7 @@ Lecture Notes for Recommendation System Algorithms
 
 TODO List：
 ## :fire: 5.推荐系统历史进展梳理
-![https://www.zhihu.com/question/20830906/answer/681688041](https://pic4.zhimg.com/80/v2-763b523bd17349cd6cfecae2765db3d5_720w.jpg?source=1940ef5c)
+![https://www.zhihu.com/question/20830906/answer/681688041](https://pic4.zhimg.com/80/v2-763b523bd17349cd6cfecae2765db3d5_720w.jpg)
 ## :fire: 6.协同过滤算法
 ## :fire: 7.Word2vec算法
 ## :fire: 8.线性的LR模型
