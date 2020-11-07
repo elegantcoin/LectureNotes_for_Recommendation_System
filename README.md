@@ -69,6 +69,7 @@ Lecture Notes for Recommendation System Algorithms
 
 TODO List：
 ## :fire: 5.推荐系统历史进展梳理
+![https://www.zhihu.com/question/20830906/answer/681688041](https://pic4.zhimg.com/80/v2-763b523bd17349cd6cfecae2765db3d5_720w.jpg?source=1940ef5c)
 ## :fire: 6.协同过滤算法
 ## :fire: 7.Word2vec算法
 ## :fire: 8.线性的LR模型
@@ -82,8 +83,8 @@ TODO List：
 
 
 ## :fire: Appendex
-- pandas 操作
-    - explode 操作 一行变多行
+- A1.pandas 操作
+    - explode 操作 一行变多行 stack()
     ```python
     # 测试一行变多行
     import pandas as pd
@@ -91,7 +92,7 @@ TODO List：
     from ast import literal_eval
     df = pd.DataFrame({'key1': ['K0', 'K0', np.nan, 'K1'],
                     'A': ["[{'id': 3, 'name': 'Fa'}, {'id': 4, 'name': 'Th'}]", "[{'id': 1, 'name': 'An'}, {'id': 2, 'name': 'Co'}]", "[{'id': 1, 'name': 'An'}, {'id': 2, 'name': 'Co'}]", "[{'id': 1, 'name': 'An'}, {'id': 2, 'name': 'Co'}]"]})
-    print(df)
+    print(df,"\n")
     df['A'] = df['A'].apply(literal_eval)
     df['A'] = df['A'].apply(lambda x: [i['name'].lower() for i in x] if isinstance(x, list) else [])
     s = df.apply(lambda x: pd.Series(x['A']),axis=1).stack().reset_index(level=1, drop=True)
@@ -99,4 +100,22 @@ TODO List：
     B_df = df.drop('A', axis=1).join(s)
     B_df
     ```
+    结果
+    ```python
+      key1                                                  A
+    0   K0  [{'id': 3, 'name': 'Fa'}, {'id': 4, 'name': 'T...
+    1   K0  [{'id': 1, 'name': 'An'}, {'id': 2, 'name': 'C...
+    2  NaN  [{'id': 1, 'name': 'An'}, {'id': 2, 'name': 'C...
+    3   K1  [{'id': 1, 'name': 'An'}, {'id': 2, 'name': 'C...
 
+    key1	B
+    0	K0	fa
+    0	K0	th
+    1	K0	an
+    1	K0	co
+    2	NaN	an
+    2	NaN	co
+    3	K1	an
+    3	K1	co
+    ```
+    
