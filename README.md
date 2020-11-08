@@ -28,6 +28,7 @@ Lecture Notes for Recommendation System Algorithms
 10.|Yahoo Movies公开?乐数据集|https://webscope.sandbox.yahoo.com
 11.|Outbrain 点击率数据|https://www.outbrain.com
 12.|Amazon product data亚马逊|http://jmcauley.ucsd.edu/data/amazon/index.html
+13.|github daicoolb整理的推荐数据集|https://github.com/daicoolb/RecommenderSystem-DataSet
 
 ## :fire: 2.推荐系统的主要流程
 ![https://zhuanlan.zhihu.com/p/259985388](https://pic1.zhimg.com/80/v2-8670b6282301ee6ce727e54f0d8c78c0_720w.jpg)
@@ -119,3 +120,7 @@ TODO List：
     3	K1	co
     ```
     
+- A2.常见的参考信息源
+    - [蘑菇先生学习记](http://xtf615.com/2018/05/03/recommender-system-survey/)
+    - [mJackie](https://github.com/mJackie/RecSys)
+    - [princewen](https://github.com/princewen/tensorflow_practice)
