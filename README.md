@@ -35,10 +35,13 @@ ___
 ![https://zhuanlan.zhihu.com/p/259985388](https://pic1.zhimg.com/80/v2-8670b6282301ee6ce727e54f0d8c78c0_720w.jpg)
 ___
 
+![](files/recom_sys.jpg)
 - 推荐系统重要的3个模块
-    - 召回模块：物品太多（数以亿计），需要挑选（~100），需要快速查询（不超过**100毫秒**）
+    - 召回模块：物品太多（数以亿计），需要挑选（~100），线上需要快速查询（不超过**100毫秒**）
     - 排序模块：对后选集精排，特征交叉，评分，更加精确的预测，TOPk
-    - 后排模块：最终给到用户前的调整，运行干预、优先级调整、下发规则等
+    - 后排模块：最终给到用户前的调整，运行干预、优先级调整、下发规则、多样性、实时性、流行度、新鲜度、冷启动等
+
+    - 实时数据处理、流平台、大数据平台、离线训练、在线更新、离线评估、A/B测试
 - 推荐系统的主要元素
     - 物品集合：
     - 用户：基本信息、行为、兴趣爱好
@@ -72,20 +75,23 @@ ___
 TODO List：
 ## :fire: 5.推荐系统历史进展梳理
 - 历史
-    - 1997，`Resnick`首次提出 “推荐系统”一词
+    - 1992，`施乐公司``David Goldberg`创建了协同过滤推荐系统
+    - 1997，`Resnick`提出 “推荐系统”一词
     - 1998，`亚马逊` 上线协同过滤
     - 2001，`IBM` Websphere增加个性化推荐
     - 2003，`Google` 开创了AdWords模式，2007，添加个性化元素
     - 2006，`Netflix` 电影推荐算法竞赛
     - 2007，`雅虎` SmartAds ?告?案
     - 2007，`ACM` 第一届推荐系统大会
+    - 2010, `Steffen Rendle`在CTR预测竞赛中提出`FM`模型
     - 2015，`Facebook` 公布其推荐系统原理
     - 2016，`Youtube` 公布其视频推荐系统
-    - 2016，`Google` 公布App商店推荐系统`Wide & Deep`
+    - 2016，`Google` 公布App商店推荐系统`Wide & Deep`（双塔深度学习）
     - 2017，`华为` 诺亚方舟团队在IJCAI上推出`DeepFM`
-    - 2017，`阿里巴巴` 推出`DIN`模型
+    - 2017，`阿里巴巴` 推出`DIN`，后续`DIEN`，`MIMN`，`ESSM`模型
+    - 2017，`京东` 推出深度强化学习模型,v3(2019)
 
-Bandit、BPR、CMN、DIEN、DKN、DMF、DSIN、Evaluation-metrics、FTRL、IRGAN、MKR、MLR、NAIS、NCF、RippleNet、SRGNN、XDeepFM、GBDT+LR、LR、FM、FFM、FNN、PNN（IPNN、OPNN、PNN*）、NFM、AFM、Wide ＆ Deep、DeepFM、DCN、DIN
+Bandit、BPR、CMN、DIEN、DKN、DMF、DSIN、Evaluation-metrics、FTRL、IRGAN、MKR、[MLR](https://arxiv.org/pdf/1704.05194.pdf)、NAIS、NCF、RippleNet、SRGNN、XDeepFM、[GBDT+LR](http://quinonero.net/Publications/predicting-clicks-facebook.pdf)、LR、FM、FFM、FNN、[PNN](https://arxiv.org/pdf/1611.00144)（IPNN、OPNN、PNN*）、[NFM](https://arxiv.org/abs/1708.05027)、[AFM](https://www.comp.nus.edu.sg/~xiangnan/papers/ijcai17-afm.pdf)、[Wide ＆ Deep](https://dl.acm.org/citation.cfm?id=2988454)、[DeepFM](https://arxiv.org/abs/1703.04247)、[DCN](https://arxiv.org/pdf/1708.05123)、[DIN](https://arxiv.org/abs/1706.06978)、[LinUCB](https://arxiv.org/pdf/1003.0146.pdf)、[ESSM](https://arxiv.org/abs/1804.07931)
 ___
 ![https://www.zhihu.com/question/20830906/answer/681688041](https://pic4.zhimg.com/80/v2-763b523bd17349cd6cfecae2765db3d5_720w.jpg)
 ___
@@ -95,15 +101,37 @@ ___
 ## :fire: 6.协同过滤算法
 - 相似度计算：
     - 同现相似度
-    - 欧??得距离
-    - ?尔逊相关系数
+    - 欧几里得距离
+    - 皮尔逊相关系数
     - Cosine相似度
     - Tanimoto系数
 ## :fire: 7.Word2vec算法
+- Embedding
+
+- TODO
+
 ## :fire: 8.线性的LR模型
-## :fire: 9.线性的FM模型
+## :fire: 9.线性的FM/FFM模型
+- 因?分解机（Factorization Machine,FM）
+- FFM（Field-aware Factorization Machine）
+- 计算广告和推荐系统中，CTR预估(click-through rate)
+- 在进行CTR预估时，除了单特征外，往往要对特征进行组合。
+- 线性模型没有考虑特征间的关联。采用多项式模型表述特征间的相关性(特征交叉)
+- 
+
+
 ## :fire: 10.树的决策树
 ## :fire: 11.树的集成学习
+- 为何要集成
+    -LR属于线性模型，优点是并行化，可以轻松处理上亿条数据，缺点是学习能力有限，需要大量的特征工程来增加模型的学习能力。
+    - FM模型通过隐变量的方式，发现两两特征之间的组合关系，(更高层次的特征组合关系需要深度神经网络)。
+    - 为什么要使用集成的决策树模型，而不是单棵的决策树模型：一棵树的表达能力很弱，不足以表达多个有区分性的特征组合
+    - 为什么建树采用GBDT而非RF：RF也是多棵树，但从效果上有实践证明不如GBDT。且GBDT前面的树，特征分裂主要体现对多数样本有区分度的特征；后面的树，主要体现的是经过前N颗树，残差仍然较大的少数样本。优先选用在整体上有区分度的特征，再选用针对少数样本有区分度的特征，思路更加合理。
+
+- 实用性
+    - 现在的GBDT和LR的融合方案真的适合现在的大多数业务数据么？现在的业务数据是大量离散特征导致的高维度离散数据。而树模型对这样的离散特征，是不能很好处理的，容易导致过拟合。
+    - GBDT没有推广性，或者说泛化能力。
+
 ## :fire: 12.深度学习的DNN算法
 ## :fire: 13.深度学习的Wide&Deep模型
 ## :fire: 14.深度学习的DeepFM模型
