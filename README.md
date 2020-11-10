@@ -31,7 +31,9 @@ Lecture Notes for Recommendation System Algorithms
 13.|github daicoolb整理的推荐数据集|https://github.com/daicoolb/RecommenderSystem-DataSet
 
 ## :fire: 2.推荐系统的主要流程
+___
 ![https://zhuanlan.zhihu.com/p/259985388](https://pic1.zhimg.com/80/v2-8670b6282301ee6ce727e54f0d8c78c0_720w.jpg)
+___
 
 - 推荐系统重要的3个模块
     - 召回模块：物品太多（数以亿计），需要挑选（~100），需要快速查询（不超过**100毫秒**）
@@ -61,17 +63,42 @@ Lecture Notes for Recommendation System Algorithms
     - 动量：方向加速度，抑制震荡，  v = αv-εg，θ = θ + v
     - Nesterov动量：提高灵敏度，先临时更新θ，再更新速度，更新θ。
     - AdaGrad：计算累积平方梯度，适合处理稀疏梯度。
-    
-
-- 牛顿法（二阶导，海森矩阵）：
     - Adam：利用有偏一阶矩、二阶矩，参数平稳，使用大数据集和高维、非凸优化
+    
+- 牛顿法（二阶导，海森矩阵）：
     - L-BFGS：计算Hessian矩阵的逆，收敛速度快，但是消耗内存。对初始值有要求，容易陷入鞍点。
 
 
 TODO List：
 ## :fire: 5.推荐系统历史进展梳理
+- 历史
+    - 1997，`Resnick`首次提出 “推荐系统”一词
+    - 1998，`亚马逊` 上线协同过滤
+    - 2001，`IBM` Websphere增加个性化推荐
+    - 2003，`Google` 开创了AdWords模式，2007，添加个性化元素
+    - 2006，`Netflix` 电影推荐算法竞赛
+    - 2007，`雅虎` SmartAds ?告?案
+    - 2007，`ACM` 第一届推荐系统大会
+    - 2015，`Facebook` 公布其推荐系统原理
+    - 2016，`Youtube` 公布其视频推荐系统
+    - 2016，`Google` 公布App商店推荐系统`Wide & Deep`
+    - 2017，`华为` 诺亚方舟团队在IJCAI上推出`DeepFM`
+    - 2017，`阿里巴巴` 推出`DIN`模型
+
+Bandit、BPR、CMN、DIEN、DKN、DMF、DSIN、Evaluation-metrics、FTRL、IRGAN、MKR、MLR、NAIS、NCF、RippleNet、SRGNN、XDeepFM、GBDT+LR、LR、FM、FFM、FNN、PNN（IPNN、OPNN、PNN*）、NFM、AFM、Wide ＆ Deep、DeepFM、DCN、DIN
+___
 ![https://www.zhihu.com/question/20830906/answer/681688041](https://pic4.zhimg.com/80/v2-763b523bd17349cd6cfecae2765db3d5_720w.jpg)
+___
+
+
+
 ## :fire: 6.协同过滤算法
+- 相似度计算：
+    - 同现相似度
+    - 欧??得距离
+    - ?尔逊相关系数
+    - Cosine相似度
+    - Tanimoto系数
 ## :fire: 7.Word2vec算法
 ## :fire: 8.线性的LR模型
 ## :fire: 9.线性的FM模型
@@ -80,6 +107,8 @@ TODO List：
 ## :fire: 12.深度学习的DNN算法
 ## :fire: 13.深度学习的Wide&Deep模型
 ## :fire: 14.深度学习的DeepFM模型
+
+## :fire: 15.工业推荐系统痛点
 
 
 
@@ -121,6 +150,12 @@ TODO List：
     ```
     
 - A2.常见的参考信息源
+    - [九老师](https://www.zhihu.com/people/nphard-79)
+    - [王喆](https://www.zhihu.com/people/wang-zhe-58)
+    - [billlee](https://www.zhihu.com/people/billlee-83)
+    - [石晓文](https://www.zhihu.com/people/shi-xiao-wen-19-51)
     - [蘑菇先生学习记](http://xtf615.com/2018/05/03/recommender-system-survey/)
     - [mJackie](https://github.com/mJackie/RecSys)
     - [princewen](https://github.com/princewen/tensorflow_practice)
+    - [宋一松](https://www.zhihu.com/people/yisong)
+    - [字节智能推荐系统](https://www.volcengine.cn/docs/4462/37486)
