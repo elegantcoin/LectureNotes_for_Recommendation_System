@@ -25,7 +25,7 @@ Lecture Notes for Recommendation System Algorithms
 7.|xLearn|https://github.com/aksnzhy/xLearn （https://xlearn-doc.readthedocs.io/en/latest/）
 8.|XGBoost|https://github.com/dmlc/xgboost （https://xgboost.readthedocs.io/en/latest/）
 9.|Million Song Dataset（MSD数据集） |http://millionsongdataset.com/
-10.|Yahoo Movies公开?乐数据集|https://webscope.sandbox.yahoo.com
+10.|Yahoo Movies公开音乐数据集|https://webscope.sandbox.yahoo.com
 11.|Outbrain 点击率数据|https://www.outbrain.com
 12.|Amazon product data亚马逊|http://jmcauley.ucsd.edu/data/amazon/index.html
 13.|github daicoolb整理的推荐数据集|https://github.com/daicoolb/RecommenderSystem-DataSet
@@ -57,7 +57,7 @@ ___
     - 深度学习：DNN
 - 排序模型算法
     - 线性：LR、FM、特征交叉+LR/FM
-    - 非线性：DNN、Wide&Deep（Google play）、FNN、PNN、DeepFM（华为诺亚??）、NFM、AFM、DCN、DIN（阿里）
+    - 非线性：DNN、Wide&Deep（Google play）、FNN、PNN、DeepFM（华为诺亚方舟）、NFM、AFM、DCN、DIN（阿里）
     - 树模型：决策树、随机森林、GBDT、XGBoost、GBDT+LR
     - 集成学习：数类型集成、GCForest
 
@@ -85,7 +85,7 @@ TODO List：
     - 2001，`IBM` Websphere增加个性化推荐
     - 2003，`Google` 开创了AdWords模式，2007，添加个性化元素
     - 2006，`Netflix` 电影推荐算法竞赛的`矩阵分解`技术
-    - 2007，`雅虎` SmartAds ?告?案
+    - 2007，`雅虎` SmartAds 广告方案
     - 2007，`ACM` 第一届推荐系统大会
     - 2010, `Steffen Rendle`在CTR预测竞赛中提出`FM`模型
     - 2015，`Facebook` 公布其推荐系统`GBDT+LR`原理
@@ -99,7 +99,7 @@ TODO List：
 ```
 Bandit、BPR、CMN、DIEN、DKN、DMF、DSIN、Evaluation-metrics、FTRL、IRGAN、MKR、[MLR](https://arxiv.org/pdf/1704.05194.pdf)、NAIS、NCF、RippleNet、SRGNN、XDeepFM、[GBDT+LR](http://quinonero.net/Publications/predicting-clicks-facebook.pdf)、LR、FM、FFM、FNN、[PNN](https://arxiv.org/pdf/1611.00144)（IPNN、OPNN、PNN*）、[NFM](https://arxiv.org/abs/1708.05027)、[AFM](https://www.comp.nus.edu.sg/~xiangnan/papers/ijcai17-afm.pdf)、[Wide ＆ Deep](https://dl.acm.org/citation.cfm?id=2988454)、[DeepFM](https://arxiv.org/abs/1703.04247)、[DCN](https://arxiv.org/pdf/1708.05123)、[DIN](https://arxiv.org/abs/1706.06978)、[LinUCB](https://arxiv.org/pdf/1003.0146.pdf)、[ESSM](https://arxiv.org/abs/1804.07931)
 ___
-![https://www.zhihu.com/question/20830906/answer/681688041](https://pic4.zhimg.com/80/v2-763b523bd17349cd6cfecae2765db3d5_720w.jpg)
+![https://www.zhihu.com/question/20830906/answer/681688041](files/deep_learning_recom.jpg)
 ___
 
 
@@ -137,11 +137,14 @@ ___
         - 训练开销相对小，泛化能力提高，线上推断简单，
         - 
 
-
     - `one-hot编码`：域中每个维度占有一个位，特征含有某个维度，对应位为1，其余位为0.（霍夫曼编码压缩空间，简单123...编码会导致同域特征相似度不一致）
     - 用向量内积项取代了`POLY2`的暴力两两特征交叉权重系数。
     - 将矩阵分解的单纯用户、物品隐向量扩展到了所有特征上。
 - FFM（Field-aware Factorization Machine）
+    - 优缺点：
+        - 引入了特征域，引入更多有价值信息，模型表达能力变强
+        - 但是计算复杂度上升，需要在模型效果和工程投入之间权衡。        
+    - 每个特征不时对应唯一的隐向量，而是一组隐向量。
 - 计算广告和推荐系统中，CTR预估(click-through rate)
 - 在进行CTR预估时，除了单特征外，往往要对特征进行组合。
 - 线性模型没有考虑特征间的关联。采用多项式模型表述特征间的相关性(特征交叉)
@@ -150,11 +153,19 @@ ___
 
 ## :fire: 10.树的决策树
 ## :fire: 11.树的集成学习
+- 优缺点
+    - `FMM`只能做二阶交叉，`GBDT+LR`实现更高阶的交叉，不必人工特征工程，能够端到端训练。
+    - LR属于线性模型，优点是并行化，可以轻松处理上亿条数据
+    - 缺点是学习能力有限，需要大量的特征工程来增加模型的学习能力。
+    - `GBDT`的缺点是容易产生过拟合。（太高阶的交叉导致），特征转换丢失了大量特征的数值信息。
+- 如何做到高阶交叉
+    - 每棵树的节点分裂一次就是一次交叉，阶数由数的深度决定。
 - 为何要集成
-    -LR属于线性模型，优点是并行化，可以轻松处理上亿条数据，缺点是学习能力有限，需要大量的特征工程来增加模型的学习能力。
     - FM模型通过隐变量的方式，发现两两特征之间的组合关系，(更高层次的特征组合关系需要深度神经网络)。
     - 为什么要使用集成的决策树模型，而不是单棵的决策树模型：一棵树的表达能力很弱，不足以表达多个有区分性的特征组合
-    - 为什么建树采用GBDT而非RF：RF也是多棵树，但从效果上有实践证明不如GBDT。且GBDT前面的树，特征分裂主要体现对多数样本有区分度的特征；后面的树，主要体现的是经过前N颗树，残差仍然较大的少数样本。优先选用在整体上有区分度的特征，再选用针对少数样本有区分度的特征，思路更加合理。
+- 为什么建树采用GBDT而非RF：
+    -  RF也是多棵树，但从效果上有实践证明不如GBDT。且GBDT前面的树，特征分裂主要体现对多数样本有区分度的特征；后面的树，主要体现的是经过前N颗树，残差仍然较大的少数样本。
+    - 优先选用在整体上有区分度的特征，再选用针对少数样本有区分度的特征，思路更加合理。
 
 - 实用性
     - 现在的GBDT和LR的融合方案真的适合现在的大多数业务数据么？现在的业务数据是大量离散特征导致的高维度离散数据。而树模型对这样的离散特征，是不能很好处理的，容易导致过拟合。
