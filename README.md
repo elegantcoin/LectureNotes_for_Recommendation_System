@@ -35,7 +35,7 @@ ___
 ![https://zhuanlan.zhihu.com/p/259985388](https://pic1.zhimg.com/80/v2-8670b6282301ee6ce727e54f0d8c78c0_720w.jpg)
 ___
 
-![](files/recom_sys.jpg)
+![](https://github.com/elegantcoin/LectureNotes_for_Recommendation_System/blob/main/files/recom_sys.jpg)
 - 推荐系统重要的3个模块
     - 召回模块：物品太多（数以亿计），需要挑选（~100），线上需要快速查询（不超过**100毫秒**）
     - 排序模块：对后选集精排，特征交叉，评分，更加精确的预测，TOPk
@@ -50,7 +50,7 @@ ___
     - 推荐结果集：一般是排序的集合
 
 ## :fire: 3.推荐系统的主要算法
-![](files/trand_evolution.jpg)
+![](https://github.com/elegantcoin/LectureNotes_for_Recommendation_System/blob/main/files/trand_evolution.jpg)
 - 召回模型算法
     - 内容相似：word2vec、LDA、FastText、LSF-SCNN、LSTM
     - 行为相似：ItemCF、UserCF、关联规则
@@ -88,10 +88,13 @@ TODO List：
     - 2007，`雅虎` SmartAds 广告方案
     - 2007，`ACM` 第一届推荐系统大会
     - 2010, `Steffen Rendle`在CTR预测竞赛中提出`FM`模型
+    - 2015, `澳大利亚国立大学`提出单隐层神经网络`AutoRec`模型
     - 2015，`Facebook` 公布其推荐系统`GBDT+LR`原理
+    - 2016，`微软` 公开了其在`Bing`搜索引擎中运用的`deep crossing`模型
     - 2016，`Youtube` 公布其视频推荐系统
     - 2016，`Google` 公布App商店推荐系统`Wide & Deep`（双塔深度学习）
     - 2017，`华为` 诺亚方舟团队在IJCAI上推出`DeepFM`
+    - 2017，`新加坡国立大学` 提出了基于深度学习的协同过滤`NeuralCF`模型
     - 2017，`阿里巴巴` 推出`DIN`，后续`DIEN`，`MIMN`，`ESSM`模型
     - 2017，`京东` 推出深度强化学习模型,v3(2019)
 ```
@@ -99,24 +102,37 @@ TODO List：
 ```
 Bandit、BPR、CMN、DIEN、DKN、DMF、DSIN、Evaluation-metrics、FTRL、IRGAN、MKR、[MLR](https://arxiv.org/pdf/1704.05194.pdf)、NAIS、NCF、RippleNet、SRGNN、XDeepFM、[GBDT+LR](http://quinonero.net/Publications/predicting-clicks-facebook.pdf)、LR、FM、FFM、FNN、[PNN](https://arxiv.org/pdf/1611.00144)（IPNN、OPNN、PNN*）、[NFM](https://arxiv.org/abs/1708.05027)、[AFM](https://www.comp.nus.edu.sg/~xiangnan/papers/ijcai17-afm.pdf)、[Wide ＆ Deep](https://dl.acm.org/citation.cfm?id=2988454)、[DeepFM](https://arxiv.org/abs/1703.04247)、[DCN](https://arxiv.org/pdf/1708.05123)、[DIN](https://arxiv.org/abs/1706.06978)、[LinUCB](https://arxiv.org/pdf/1003.0146.pdf)、[ESSM](https://arxiv.org/abs/1804.07931)
 ___
-![https://www.zhihu.com/question/20830906/answer/681688041](files/deep_learning_recom.jpg)
+![https://www.zhihu.com/question/20830906/answer/681688041](https://github.com/elegantcoin/LectureNotes_for_Recommendation_System/blob/main/files/deep_learning_recom.jpg)
 ___
 
 
 
 ## :fire: 6.协同过滤算法
 - 优缺点：
-    - 协同过滤直观、可解释性强
-    - 不具备较强的泛化能力，处理稀疏向量的能力弱
+    - 协同过滤直观、可解释性强、能实现?较泛化的检索、能够更好地处理稀疏共现矩阵问题
+    - 不具备较强的泛化能力，处理稀疏向量的能力弱，协同过滤仅利用用户和物品的交互信息，无法有效地引入用户年龄、性别、商品描述、商品分类、当前时间等一系列用户特征、物品特征和上下文特征
     - 矩阵分解相较于协同过滤，有更强的泛化能力，因为影响量的生成过程实际是全局拟合的过程，拥有全量信息。
+
+- 实现协同过滤的步骤：
+    - （1）收集用户偏好。
+    - （2）找到相似的用户或物品。
+    - （3）计算并推荐。
 
 - 相似度计算：
     - 同现相似度
     - 欧几里得距离
     - 皮尔逊相关系数
         - 皮尔逊相关系数通过使用用户平均分对各独立评分进行修正，减小了用户评分偏置的影响。
-    - Cosine相似度
-    - Tanimoto系数
+    - Cosine相似度 （点积/|模|）
+    - Tanimoto系数 (Cosine的扩展，分母减去交叉项)
+
+- 分类：
+    - UserCF 通过算法分析出与你的内容偏好相近的用户，将其喜欢的商品推荐给你
+        - 但是好多场景不适用，①在互联网应用的场景下，用户数往往远大于物品数。
+        - 用户只有几次购买或者点击行为，很难找到相似用户。
+        - UserCF 不适用于正反馈获取较难的场景（如酒店预定、大件商品购买等低频应用）
+    - ItemCF 通过算法分析出商品和商品之间的关联度，根据你喜欢的商品推荐最相关的商品
+    
 ## :fire: 7.Word2vec算法
 - Embedding
 
@@ -134,8 +150,8 @@ ___
 ## :fire: 9.线性的FM/FFM模型
 - 因子分解机（Factorization Machine,FM）
     - 优缺点：
-        - 训练开销相对小，泛化能力提高，线上推断简单，
-        - 
+        - 空间复杂度低，训练开销相对小，泛化能力提高，更好的扩展性和灵活性，线上推断简单，
+        - 但是，矩阵分解同样不方便加入用户、物品和上下文相关的特征，这使得矩阵分解丧失了利用很多有效信息的机会，同时在缺乏用户历史行为时，无法进行有效的推荐
 
     - `one-hot编码`：域中每个维度占有一个位，特征含有某个维度，对应位为1，其余位为0.（霍夫曼编码压缩空间，简单123...编码会导致同域特征相似度不一致）
     - 用向量内积项取代了`POLY2`的暴力两两特征交叉权重系数。
